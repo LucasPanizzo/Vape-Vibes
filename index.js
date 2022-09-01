@@ -1,44 +1,87 @@
-//Objetos
-function product(nombre,precio){
-    this.nombre = nombre
-    this.precio = precio
-};
-    //Vaporizadores
-    const vapo1 = new product("Vaporesso Renova Zero",10000);
-    const vapo2 = new product("Uwell Caliburn",12000);
-    const vapo3 = new product("Vaporesso GTX GO 80",14000);
-    //Liquidos
-    const liquido1 = new product("Sabor frutilla",1000);
-    const liquido2 = new product("Sabor uva",1300);
-    const liquido3 = new product("Sabor sandía",1600);
-    //Repuestos
-    const rep1 = new product("Resistencia",500)
-    const rep2 = new product("Batería",2000)
-    const rep3 = new product("Cartucho",3500)
-    //Países con envío
-    const arg = new product("Argentina",800)
-    const chi = new product("Chile",1200)
-    const uru = new product("Uruguay",1500)
-    const otro = new product("Otro",2000)
-// ---------------------------------
 // Arreglos
-let productos = ["Vaporizadores","Líquidos","Repuestos"]
+let categorias = ["Vaporizadores","Liquidos","Repuestos"];
+let vaporizadores = [];
+let liquidos = [];
+let repuestos = [];
+let paises = [];
 let carrito = [];
 // ------------------------------
+//Objetos
+    //Vaporizadores
+    const vapo1 = {
+        nombre:"Vaporesso Renova Zero",precio:10000,id:1
+    };
+    vaporizadores.push(vapo1)
+    const vapo2 = {
+        nombre:"Uwell Caliburn",precio:12000,id:2
+    };
+    vaporizadores.push(vapo2)
+    const vapo3 = 
+    {nombre:"Vaporesso GTX GO 80",precio:14000,id:3
+    };
+    vaporizadores.push(vapo3)
+    //----------------
+
+    //Liquidos
+    const liquido1 = {
+        nombre:"Sabor frutilla",precio:1000,id:1
+    };
+    liquidos.push(liquido1)
+    const liquido2 = {
+        nombre:"Sabor uva",precio:1300,id:2
+    };
+    liquidos.push(liquido2)
+    const liquido3 = {
+        nombre:"Sabor sandía",precio:1600,id:3
+    };
+    liquidos.push(liquido3)
+    //----------------
+    //Repuestos
+    const rep1 = {
+        nombre:"Resistencia",precio:500,id:1
+    };
+    repuestos.push(rep1)
+    const rep2 = {
+        nombre:"Batería",precio:2000,id:2
+    };
+    repuestos.push(rep2)
+    const rep3 = {
+        nombre:"Cartucho",precio:3500,id:3
+    };
+    repuestos.push(rep3)
+    //----------------
+    //Países con envío
+    const arg = {
+        nombre:"Argentina",precio:800,id:1
+    };
+    paises.push(arg)
+    const chi = {
+        nombre:"Chile",precio:1200,id:2
+    };
+    paises.push(chi)
+    const uru = {
+        nombre:"Uruguay",precio:1500,id:3
+    };
+    paises.push(uru)
+    const otro = {
+        nombre:"Otro",precio:2000,id:4
+    };
+    paises.push(otro)
+    // ---------------
 // Variables
 let precioFinal = 0;
 let precioProducto
 let seguirComprando = true;
 const nombre = prompt("Ingresa tu nombre");
 alert("¡Bienvenido "+nombre+" a la tienda de Vape Vibes!");
-let producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+productos[0]+" - 2."+productos[1]+" - 3."+productos[2]+" - 4.Ver carrito."));
+let producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+categorias[0]+" - 2."+categorias[1]+" - 3."+categorias[2]+" - 4.Ver carrito."));
 let reinicio
-// ----------------------------
+// ----------------------------precioProducto
 // Funciones
 function continuar(){
     reinicio = parseInt(prompt(nombre+" ¿Quieres seguir comprando? 1.Si 2.No"))
     if(reinicio===1){
-        producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+productos[0]+" - 2."+productos[1]+" - 3."+productos[2]+" - 4.Ver carrito."));
+        producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+categorias[0]+" - 2."+categorias[1]+" - 3."+categorias[2]+" - 4.Ver carrito."));
     }
     else if(reinicio===2){
         seguirComprando = false
@@ -69,8 +112,14 @@ while(seguirComprando===true){
             continuar();
             carrito.push(vapo3.nombre+" $"+vapo3.precio)
         }
+        // const vapoSeleccionado = vaporizadores.find(vapo=>vapo.id===vapoSeleccionado)
+        // if(vapoSeleccionado){
+        //     continuar();
+        //     total(vapoSeleccionado.precio);
+        //     carrito.push(vapoSeleccionado.nombre+" $"+vapoSeleccionado.precio)
+        // }
         else if(vaporizador===4){
-            producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+productos[0]+" - 2."+productos[1]+" - 3."+productos[2]+" - 4.Ver carrito."));
+            producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+categorias[0]+" - 2."+categorias[1]+" - 3."+categorias[2]+" - 4.Ver carrito."));
         }
         else{
             alert("El producto seleccionado es inválido")
@@ -94,7 +143,7 @@ while(seguirComprando===true){
             carrito.push(liquido3.nombre+" $"+liquido3.precio)
         }
         else if(liquido===4){
-            producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+productos[0]+" - 2."+productos[1]+" - 3."+productos[2]+" - 4.Ver carrito."));
+            producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+categorias[0]+" - 2."+categorias[1]+" - 3."+categorias[2]+" - 4.Ver carrito."));
         }
         else{
             alert("El producto seleccionado es inválido")
@@ -118,7 +167,7 @@ while(seguirComprando===true){
             carrito.push(rep1.nombre+" $"+rep1.precio)
         }
         else if(rep===4){
-            producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+productos[0]+" - 2."+productos[1]+" - 3."+productos[2]+" - 4.Ver carrito."));
+            producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+categorias[0]+" - 2."+categorias[1]+" - 3."+categorias[2]+" - 4.Ver carrito."));
         }
         else{
             alert("El producto seleccionado es inválido")
@@ -130,11 +179,11 @@ while(seguirComprando===true){
     }
     else{
         alert("Selecciona una opción válida")
-        producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+productos[0]+" - 2."+productos[1]+" - 3."+productos[2]+" - 4.Ver carrito."));
+        producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+categorias[0]+" - 2."+categorias[1]+" - 3."+categorias[2]+" - 4.Ver carrito."));
     }
 }
 alert("Tus productos seleccionados son: "+carrito.join(" - "))
-
+console.log(carrito)
 let envio = parseInt(prompt(nombre+" ¿A qué país envíaremos tu compra? 1."+arg.nombre+" ($"+arg.precio+") - 2."+chi.nombre+" ($"+chi.precio+") - 3."+uru.nombre+" ($"+uru.precio+") - 4."+otro.nombre+" ($"+otro.precio+")."));
 if(envio===1){
     total(arg.precio);
