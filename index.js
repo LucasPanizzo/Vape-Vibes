@@ -5,6 +5,8 @@ let liquidos = [];
 let repuestos = [];
 let paises = [];
 let carrito = [];
+let carritoFinal = [];
+let carritoParcial = [];
 // ------------------------------
 //Objetos
     //Vaporizadores
@@ -92,25 +94,21 @@ function continuar(){
     }
 }
 
-total=(precioProducto) => precioFinal = precioFinal + precioProducto;
 // ------------------------------
 while(seguirComprando===true){
     if(producto===1){
         let vaporizador = parseInt(prompt("Selecciona el vaporizador que quieres comprar: 1."+vapo1.nombre+" ($"+vapo1.precio+") - 2."+vapo2.nombre+" ($"+vapo2.precio+") - 3."+vapo3.nombre+" ($"+vapo3.precio+"). - 4.Cancelar"));  
         if(vaporizador===1){
-            total(vapo1.precio);
             continuar();
-            carrito.push(vapo1.nombre+" $"+vapo1.precio)
+            carrito.push(vapo1)
         }
         else if(vaporizador===2){
-            total(vapo2.precio);
             continuar();
-            carrito.push(vapo2.nombre+" $"+vapo2.precio)
+            carrito.push(vapo2)
         }
         else if(vaporizador===3){
-            total(vapo3.precio);
             continuar();
-            carrito.push(vapo3.nombre+" $"+vapo3.precio)
+            carrito.push(vapo3)
         }
         // const vapoSeleccionado = vaporizadores.find(vapo=>vapo.id===vapoSeleccionado)
         // if(vapoSeleccionado){
@@ -128,19 +126,19 @@ while(seguirComprando===true){
     else if(producto===2){
         let liquido = parseInt(prompt("Selecciona el liquido que quieres comprar: 1."+liquido1.nombre+" ($"+liquido1.precio+") - 2."+liquido2.nombre+" ($"+liquido2.precio+") - 3."+liquido3.nombre+" ($"+liquido3.precio+"). - 4.Cancelar"));  
         if(liquido===1){
-            total(liquido1.precio);
+            
             continuar();
-            carrito.push(liquido1.nombre+" $"+liquido1.precio)
+            carrito.push(liquido1)
         }
         else if(liquido===2){
-            total(liquido2.precio);
+            
             continuar();
-            carrito.push(liquido2.nombre+" $"+liquido2.precio)
+            carrito.push(liquido2)
         }
         else if(liquido===3){
-            total(liquido3.precio);
+            
             continuar();
-            carrito.push(liquido3.nombre+" $"+liquido3.precio)
+            carrito.push(liquido3)
         }
         else if(liquido===4){
             producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+categorias[0]+" - 2."+categorias[1]+" - 3."+categorias[2]+" - 4.Ver carrito."));
@@ -152,19 +150,16 @@ while(seguirComprando===true){
     else if(producto===3){
         let rep = parseInt(prompt("Selecciona el repuesto que quieres comprar: 1."+rep1.nombre+" ($"+rep1.precio+") - 2."+rep2.nombre+" ($"+rep2.precio+") - 3."+rep3.nombre+" ($"+rep3.precio+"). - 4.Cancelar"));  
         if(rep===1){
-            total(rep1.precio);
             continuar();
-            carrito.push(rep1.nombre+" $"+rep1.precio)
+            carrito.push(rep1)
         }
         else if(rep===2){
-            total(rep2.precio);
             continuar();
-            carrito.push(rep1.nombre+" $"+rep1.precio)
+            carrito.push(rep2)
         }
         else if(rep===3){
-            total(rep3.precio);
             continuar();
-            carrito.push(rep1.nombre+" $"+rep1.precio)
+            carrito.push(rep3)
         }
         else if(rep===4){
             producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+categorias[0]+" - 2."+categorias[1]+" - 3."+categorias[2]+" - 4.Ver carrito."));
@@ -174,7 +169,13 @@ while(seguirComprando===true){
         }
     }
     else if(producto===4){
-        alert("Tus productos seleccionados son: "+carrito.join(" - "))
+        carrito.forEach(el =>{
+            carritoParcial.push(el.nombre+" $"+el.precio)
+        });
+        const carritoTotal = carrito.reduce(
+            (acc, elemento) => acc + elemento.precio,0
+        );
+        alert("Tus productos son: "+carritoParcial.join(" - ")+". Por un total de $"+carritoTotal)
         continuar()
     }
     else{
@@ -182,19 +183,27 @@ while(seguirComprando===true){
         producto = parseInt(prompt(nombre+" ,selecciona el producto a comprar: 1."+categorias[0]+" - 2."+categorias[1]+" - 3."+categorias[2]+" - 4.Ver carrito."));
     }
 }
-alert("Tus productos seleccionados son: "+carrito.join(" - "))
-console.log(carrito)
+carrito.forEach(el =>{
+    carritoFinal.push(el.nombre+" $"+el.precio)
+});
+carritoTotal = carrito.reduce(
+  (acc, elemento) => acc + elemento.precio,0
+);
+alert("Tus productos son: "+carritoFinal.join(" - ")+". Por un total de $"+carritoTotal);
 let envio = parseInt(prompt(nombre+" ¿A qué país envíaremos tu compra? 1."+arg.nombre+" ($"+arg.precio+") - 2."+chi.nombre+" ($"+chi.precio+") - 3."+uru.nombre+" ($"+uru.precio+") - 4."+otro.nombre+" ($"+otro.precio+")."));
 if(envio===1){
-    total(arg.precio);
+    carrito.push(arg);
 }
 else if(envio===2){
-    total(chi.precio);
+    carrito.push(chi);
 }
 else if(envio===3){
-    total(uru.precio);
+    carrito.push(uru);
 }
 else{
-    total(otro.precio)
+    carrito.push(otro)
 }
-alert(nombre+" ,el precio final, con envío incluído, es $"+precioFinal+". Te redigiremos a la página de pago.")
+carritoTotal = carrito.reduce(
+    (acc, elemento) => acc + elemento.precio,0
+  );
+alert(nombre+" ,el precio final, con envío incluído, es $"+carritoTotal+". Te redigiremos a la página de pago.")
