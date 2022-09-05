@@ -16,69 +16,67 @@
     const vapo1 = {
         nombre:"Vaporesso Renova Zero",precio:10000,id:1
     };
-    vaporizadores.push(vapo1)
+    vaporizadores.push(vapo1);
     const vapo2 = {
         nombre:"Uwell Caliburn",precio:12000,id:2
     };
-    vaporizadores.push(vapo2)
+    vaporizadores.push(vapo2);
     const vapo3 = 
     {nombre:"Vaporesso GTX GO 80",precio:14000,id:3
     };
-    vaporizadores.push(vapo3)
+    vaporizadores.push(vapo3);
     //----------------
 
     //Liquidos
     const liquido1 = {
         nombre:"Sabor frutilla",precio:1000,id:1
     };
-    liquidos.push(liquido1)
+    liquidos.push(liquido1);
     const liquido2 = {
         nombre:"Sabor uva",precio:1300,id:2
     };
-    liquidos.push(liquido2)
+    liquidos.push(liquido2);
     const liquido3 = {
         nombre:"Sabor sandía",precio:1600,id:3
     };
-    liquidos.push(liquido3)
+    liquidos.push(liquido3);
     //----------------
 
     //Repuestos
     const rep1 = {
         nombre:"Resistencia",precio:500,id:1
     };
-    repuestos.push(rep1)
+    repuestos.push(rep1);
     const rep2 = {
         nombre:"Batería",precio:2000,id:2
     };
-    repuestos.push(rep2)
+    repuestos.push(rep2);
     const rep3 = {
         nombre:"Cartucho",precio:3500,id:3
     };
-    repuestos.push(rep3)
+    repuestos.push(rep3);
     //----------------
 
     //Países con envío
     const arg = {
         nombre:"Argentina",precio:800,id:1
     };
-    paises.push(arg)
+    paises.push(arg);
     const chi = {
         nombre:"Chile",precio:1200,id:2
     };
-    paises.push(chi)
+    paises.push(chi);
     const uru = {
         nombre:"Uruguay",precio:1500,id:3
     };
-    paises.push(uru)
+    paises.push(uru);
     const otro = {
         nombre:"Otro",precio:2000,id:4
     };
-    paises.push(otro)
+    paises.push(otro);
     // ---------------
 
 // Variables
-    let precioFinal = 0;
-    let precioProducto;
     let seguirComprando = true;
     let reinicio;
 // ----------------------------
@@ -175,10 +173,13 @@ while(seguirComprando===true){
             else if(seleccionCarrito===3){
                 continuar();
             }
+            else{
+                alert("Selecciona una opción válida.");
+            }
         }
         else{
             alert("Tu carrito está vacío.");
-            continuar();
+            continuar()
         }
     }
     else{
@@ -194,6 +195,7 @@ carritoTotal = carrito.reduce(
   (acc, elemento) => acc + elemento.precio,0
 );
 alert("Tus productos son: "+carritoFinal.join(" - ")+". Por un total de $"+carritoTotal);
+
 let envio = parseInt(prompt(nombre+" ¿A qué país envíaremos tu compra? 1."+arg.nombre+" ($"+arg.precio+") - 2."+chi.nombre+" ($"+chi.precio+") - 3."+uru.nombre+" ($"+uru.precio+") - 4."+otro.nombre+" ($"+otro.precio+")."));
 if(envio===1){
     carrito.push(arg);
