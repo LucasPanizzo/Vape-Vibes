@@ -12,20 +12,32 @@ let productos =[
 ];
     //Arreglos correspondientes al funcionamiento del carrito de compras.
     let carrito = [];
-    let carritoFinal = [];
-    let carritoParcial = [];
 //----------------------
 let card = document.getElementById("card-plantilla");
 
 productos.forEach((el) => {
     card.innerHTML += `
     <div class="card" style="width: 18rem;">
-        <img src="${el.img}" class="card-img-top" alt="...">
+        <img src="${el.img}" class="card-img-top" alt="${el.nombre}">
         <div class="card-body">
         <h5 class="card-title">${el.nombre}</h5>
         <h6 class="card-subtitle mb-2 text-muted">$${el.precio}</h6>
-        <a href="#" class="btn btn-primary" id="boton${el.id}">Agregar al carrito</a>
+        <a href="#" class="btn btn-primary" id="boton${el.id}">Agregar al carrito <i class="bi bi-cart-fill"></i></a>
         </div>
     </div>    
     `
-})
+
+    const boton = document.getElementById(`boton${el.id}`)
+    console.log(boton)
+    boton.addEventListener('click', alert('as'))
+});
+
+
+
+
+
+let agregar = (id) => {
+    let prodSeleccionado = productos.find(prod=>prod.id===id);
+    carrito.push(prodSeleccionado);
+}
+console.log(carrito)
