@@ -32,34 +32,12 @@ let ids = productos.map((el) => el.id); // Mapeo de las ids de los objetos, para
             <div class="card-body">
                 <h5 class="card-title">${el.nombre}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">$${el.precio}</h6>
-                <a href="#" class="btn btn-primary bott" id="boton${el.id}">Agregar al carrito <i class="bi bi-cart-fill"></i></a>
+                <a href="#" class="btn btn-primary bott" onclick="agregar(${el.id})" id="boton${el.id}">Agregar al carrito <i class="bi bi-cart-fill"></i></a>
             </div>
         </div>    
         `
     });
 // -------------------------
-
-// Codigo correspondiente a los botones de las cards, fue la unica manera que encontré de hacerlo.
-// cada boton se guarda en una variable, a la cual le agrego un eventlistener, haciendo que cada vez que haga click en el botón, se ejecute la function agregar, con el parametro de la ID correspondiente al boton.
-    const boton1 = document.getElementById('boton1');
-    boton1.addEventListener('click',() => agregar(ids[0]));
-    const boton2 = document.getElementById('boton2');
-    boton2.addEventListener('click',() => agregar(ids[1]));
-    const boton3 = document.getElementById('boton3');
-    boton3.addEventListener('click',() => agregar(ids[2]));
-    const boton4 = document.getElementById('boton4');
-    boton4.addEventListener('click',() => agregar(ids[3]));
-    const boton5 = document.getElementById('boton5');
-    boton5.addEventListener('click',() => agregar(ids[4]));
-    const boton6 = document.getElementById('boton6');
-    boton6.addEventListener('click',() => agregar(ids[5]));
-    const boton7 = document.getElementById('boton7');
-    boton7.addEventListener('click',() => agregar(ids[6]));
-    const boton8 = document.getElementById('boton8');
-    boton8.addEventListener('click',() => agregar(ids[7]));
-    const boton9 = document.getElementById('boton9');
-    boton9.addEventListener('click',() => agregar(ids[8]));
-//---------------------
 
 //Funciones Correspondientes al agregado de objetos al carrito
     // Se ejecuta cuando se presiona un boton, recibe un parametro (id) y si este existe, lo guarda en una variable, lo pushea al carrito y ejecuta la siguiente function.
