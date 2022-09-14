@@ -8,12 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" 
     crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./main.css">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/index.html">Vape Vibes</a>
+                <a class="navbar-brand" href="/index.html"><img src="./imagenes/vapeLogo.png" alt=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -34,14 +35,46 @@
                     </li>
                     </ul>
                 </div>
-                <a href="" class="btn btn-primary">Carrito</a>
             </div>
         </nav>
     </header>
     <main>
         <div class="container" id="container">
-            <div class="row g-4 justify-content-around" id="card-plantilla">
+            <div class="row g-4 justify-content-around" id="cardPlantilla">
                  <!-- Cards generadas mediante JS -->
+            </div>
+        </div>    
+        <div class="container">
+            <div class="carritoContainer">
+                <h3 class="text-center">CARRITO</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="carritoSubtitulo">
+                            <h6>Producto</h6>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="carritoSubtitulo">
+                            <h6>Precio</h6>
+                        </div>
+                    </div>
+                </div> 
+
+                <div class="carritoElementsContainer" id="carritoPlantilla"> 
+                    <!-- elementos del carrito generados mediante JS -->
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="carritoTotal d-flex align-items-center">
+                            <p class="mb-0 ">Total:</p>
+                            <p class="ml-4 mb-0 flex-fill" id="carritoTotal">$0</p>
+                            <button class="btn btn-primary justify-self-end" id="carritoVaciar">Vaciar Carrito</button>
+                            <a href="#" class="btn btn-primary justify-self-end" id="carritoTerminar">Terminar Compra</a>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </main> 

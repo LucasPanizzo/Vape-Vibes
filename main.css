@@ -1,0 +1,50 @@
+.navbar-brand img{
+    width: 250px;
+}
+.navbar{
+    background-color: #fcfcfc;
+}
+.carritoContainer{
+    margin-top: 15px;
+    margin-bottom: 25px;
+    border-top: 1px solid #4995d2;
+    border-bottom: 1px solid #4995d2;
+}
+.carritoContainer h3{
+    color: #4995d2;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 2.5rem;
+}
+#carritoVaciar{
+    justify-self: end;
+}
+.carrito-item-title h6,.carrito-item-precio p{
+    font-size: 1.1rem;
+}
+.carritoSubtitulo h6{
+    font-size: 1.3rem;
+    color: #4995d2;
+}
+.carritoBasura{
+    font-size: 1.5rem;
+    color:#4995d2;
+}
+.carritoBasuraButt{
+    border: none;
+    background-color: white;
+}
+.carritoTotal p{
+    font-size: 1.5rem;
+    color: #3b71b9;
+    font-weight: 600;
+}
+#carritoTotal{
+    margin-left: 5px;
+}
+#carritoTerminar{
+    margin-left: 20px;
+}
+.btn{
+    background-color:#3b71b9 ;
+}
