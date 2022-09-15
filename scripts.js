@@ -16,6 +16,9 @@
 //----------------------
 // Obtención de objetos del DOM
     let card = document.getElementById("cardPlantilla");
+    let cardVapos = document.getElementById("cardPlantillaVapos")
+    let cardLiquis = document.getElementById("cardPlantillaLiquis")
+    let cardReps = document.getElementById("cardPlantillaReps")
     let carritoPlantilla = document.getElementById("carritoPlantilla");
     let carritoTotalText = document.getElementById("carritoTotal");
     let botonVaciar = document.getElementById("carritoVaciar");
@@ -24,14 +27,33 @@
 
 let ids = productos.map((el) => el.id); // Mapeo de las ids de los objetos, para pushear al carrito con cada botón.
 
-// Código de las cards de producto inyectado mediante JS
-    
-    productos.forEach((el) => {
-        crearCards(el)
-    });
-    
-    function crearCards(el){
-        card.innerHTML += `
+// Filtros; Creo un array filtrando los objetos correspondientes por categoria, para luego inyectar las cards que corresponda en cada página
+let filtroVapos = productos.filter((prod) => prod.categoria === "vaporizadores")
+let filtroLiquis = productos.filter((prod) => prod.categoria === "liquidos")
+let filtroReps = productos.filter((prod) => prod.categoria === "repuestos")
+//-------------------
+// Código de las cards de producto inyectado mediante JS. Revisa si existe el objeto a llamar, y luego reproduce la function constructora de las tarjetas.
+    if(card){
+        productos.forEach((el) => {
+            crearCards(el,card)
+        });
+        
+    } else if(cardVapos){
+        filtroVapos.forEach((el) => {
+            crearCards(el,cardVapos)
+        });
+    } else if(cardLiquis){
+        filtroLiquis.forEach((el) => {
+            crearCards(el,cardLiquis)
+        });
+    } else if(cardReps){
+        filtroReps.forEach((el) => {
+            crearCards(el,cardReps)
+        });
+    }
+    //Function creadora de cards a inyectar, recibe dos parametros, uno que define los elementos de la card, y otro que define el contenedor donde se inyectaran.
+    function crearCards(el,name){
+        name.innerHTML += `
         <div class="card" style="width: 18rem;">
             <img src="${el.img}" class="card-img" alt="${el.nombre}">
             <div class="card-body">
