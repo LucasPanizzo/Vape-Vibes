@@ -4,13 +4,27 @@
 .navbar{
     background-color: #fcfcfc;
 }
+.nav-link{
+    font-family: 'play', sans-serif;
+    color: #3b71b9;
+    font-size: 1.2rem;
+}
+.activo{
+    color: #50a7df;
+    border-top: 1px solid #50a7df;
+    border-bottom: 1px solid #50a7df;
+}
 .carritoContainer{
     margin-top: 15px;
     margin-bottom: 25px;
     border-top: 1px solid #4995d2;
     border-bottom: 1px solid #4995d2;
 }
+.active{
+    color: #4995d2;
+}
 .carritoContainer h3{
+    font-family: 'play',sans-serif;
     color: #4995d2;
     margin-top: 10px;
     margin-bottom: 15px;
@@ -23,6 +37,7 @@
     font-size: 1.1rem;
 }
 .carritoSubtitulo h6{
+    font-family: 'Russo One',sans-serif;
     font-size: 1.3rem;
     color: #4995d2;
 }
@@ -35,11 +50,12 @@
     background-color: white;
 }
 .carritoTotal p{
+    font-family: 'Russo One',sans-serif;
     font-size: 1.5rem;
     color: #3b71b9;
-    font-weight: 600;
 }
 #carritoTotal{
+    font-family: 'kanit',sans-serif;
     margin-left: 5px;
 }
 #carritoTerminar{
@@ -47,4 +63,26 @@
 }
 .btn{
     background-color:#3b71b9 ;
+}
+.id-producto{
+    display: none;
+}
+.oculto{
+    display: none;
+}
+.card{
+    border:1px solid #3b71b9;
+}
+.card-img{
+    margin-top: 10px;
+}
+.card-title{
+    font-size: 1.2rem;
+    color: #3b71b9;
+    font-family: 'Russo One', sans-serif;
+}
+.card h6{
+    color:#4995d2;
+    font-family: 'kanit',sans-serif;
+    font-size: 1rem;
 }
