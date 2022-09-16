@@ -60,7 +60,7 @@ let filtroReps = productos.filter((prod) => prod.categoria === "repuestos")
                 <h5 class="card-title">${el.nombre}</h5>
                 <span class="id-producto">${el.id}</span>
                 <h6 class="card-precio mb-2">$${el.precio}</h6>
-                <a href="#" class="btn btn-primary bott" id="boton${el.id}">Agregar al carrito <i class="bi bi-cart-fill"></i></a>
+                <button class="btn btn-primary bott" id="boton${el.id}">Agregar al carrito <i class="bi bi-cart-fill"></i></button>
             </div>
         </div>    
         `
@@ -87,16 +87,21 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
             const carritoFila = document.createElement('div');
             const carritoContenido = `
             <div class="row carritoItem border-bottom aling-items-center">
-            <div class="col-6">
+            <div class="col-4">
                 <div class="carrito-item-title d-fle pb-2 pt-3">
                     <h6 class="ml-3 mb-0">${elem.nombre}</h6>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <div class="carrito-item-precio d-flex pb-2 pt-3">
                     <p class="mb-0">$${elem.precio}</p>
                 </div>
             </div>
+            <div class="col-3">
+            <div class="carrito-item-cantidad d-flex pb-2 pt-3">
+                <p class="mb-0">X</p>
+            </div>
+        </div>
             <div class="col-2">
                 <div class="carrito-item-trash d-flex justify-content-between align-items-center h-100 pb-2 pt-3">
                     <button class="carritoBasuraButt" onclick="eliminarDelCarrito(${elem.id})"><i class="bi bi-trash carritoBasura" id="trash${elem.id}"></i></button>
@@ -129,4 +134,8 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
         agregarItemAlCarrito();
     } ;
 // -----------------------
-terminarCompra.addEventListener('click', () => alert('Serás redirigido a la página de pago.'));
+terminarCompra.addEventListener('click', () => {
+    alert('Serás redirigido a la página de pago.')
+    carrito.length = 0;
+    agregarItemAlCarrito();
+});

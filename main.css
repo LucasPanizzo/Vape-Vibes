@@ -86,3 +86,16 @@
     font-family: 'kanit',sans-serif;
     font-size: 1rem;
 }
+.containerElementosCarrito{
+    border-bottom: 1px solid #4995d2; 
+}
+.carrito-item-title{
+    font-family: 'Russo One',sans-serif;
+    font-weight: 100;
+}
+.carrito-item-precio{
+    font-family: 'kanit',sans-serif;
+}
+footer{
+    background-color: #3b71b9;
+}
