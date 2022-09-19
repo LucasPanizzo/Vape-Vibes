@@ -24,9 +24,15 @@
     let botonVaciar = document.getElementById("carritoVaciar");
     let terminarCompra = document.getElementById("carritoTerminar")
 // ------------------
-
 let ids = productos.map((el) => el.id); // Mapeo de las ids de los objetos, para pushear al carrito con cada botón.
-
+// Obtención del carrito mediante localStorage
+// agrego un event listener para cuando cargue la página, una vez que esto sucede, obtiene el item guardado en el storage en la function agregarItemAlCarrito, cuando obtengo todo el carrito, lo vuelvo a convertir a JS para poder reproducirlo y asi no perder los elementos del carrito.
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        agregarItemAlCarrito()
+    }
+})
 // Filtros; Creo un array filtrando los objetos correspondientes por categoria, para luego inyectar las cards que corresponda en cada página
 let filtroVapos = productos.filter((prod) => prod.categoria === "vaporizadores")
 let filtroLiquis = productos.filter((prod) => prod.categoria === "liquidos")
@@ -99,7 +105,7 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
             </div>
             <div class="col-3">
             <div class="carrito-item-cantidad d-flex pb-2 pt-3">
-                <p class="mb-0">X</p>
+                <p class="mb-0 ms-5">1 </p>
             </div>
         </div>
             <div class="col-2">
@@ -111,6 +117,8 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
             `
             carritoFila.innerHTML = carritoContenido
             carritoPlantilla.appendChild(carritoFila)
+            
+            localStorage.setItem('carrito', JSON.stringify(carrito))
         })};
         // configuro los botones como target, y utilizo el metodo .closest para seleccionar la card mas cercana al boton presionado, para recuperarla, luego con esa card, recupero un elemento donde guarde  la id del producto, y ejecuto la funcion agregar()
         function eventoPresion(event){
@@ -118,7 +126,6 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
             const item= butt.closest('.card')
         
             const itemId = parseInt(item.querySelector('.id-producto').textContent);
-            console.log(itemId)
             agregar(itemId)
         }
 //----------------------

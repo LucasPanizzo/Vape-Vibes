@@ -99,3 +99,6 @@
 footer{
     background-color: #3b71b9;
 }
+html{
+    height: fit-content;
+}
