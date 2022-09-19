@@ -1,14 +1,14 @@
 // Arreglos
     let productos =[
-        {categoria:"vaporizadores",nombre:"Vaporesso Renova Zero",precio:10000,img:"../imagenes/vapo1.jpg",id:1},
-        {categoria:"vaporizadores",nombre:"Uwell Caliburn",precio:12000,img:"../imagenes/vapo2.jpg",id:2},
-        {categoria:"vaporizadores",nombre:"Vaporesso GTX GO 80",precio:14000,img:"../imagenes/vapo3.jpg",id:3},
-        {categoria:"liquidos",nombre:"Sabor frutilla",precio:1000,img:"../imagenes/liquido1.jpg",id:4},
-        {categoria:"liquidos",nombre:"Sabor uva",precio:1300,img:"../imagenes/liquido2.jpg",id:5},
-        {categoria:"liquidos",nombre:"Sabor sandía",precio:1600,img:"../imagenes/liquido3.jpg",id:6},
-        {categoria:"repuestos",nombre:"Resistencia",precio:500,img:"../imagenes/rep1.jpg",id:7},
-        {categoria:"repuestos",nombre:"Batería",precio:2000,img:"../imagenes/rep2.jpg",id:8},
-        {categoria:"repuestos",nombre:"Cartucho",precio:3500,img:"../imagenes/rep3.jpg",id:9},
+        {categoria:"vaporizadores",nombre:"Vaporesso Renova Zero",precio:10000,img:"../imagenes/vapo1.jpg",id:1,cantidad:1},
+        {categoria:"vaporizadores",nombre:"Uwell Caliburn",precio:12000,img:"../imagenes/vapo2.jpg",id:2,cantidad:1},
+        {categoria:"vaporizadores",nombre:"Vaporesso GTX GO 80",precio:14000,img:"../imagenes/vapo3.jpg",id:3,cantidad:1},
+        {categoria:"liquidos",nombre:"Sabor frutilla",precio:1000,img:"../imagenes/liquido1.jpg",id:4,cantidad:1},
+        {categoria:"liquidos",nombre:"Sabor uva",precio:1300,img:"../imagenes/liquido2.jpg",id:5,cantidad:1},
+        {categoria:"liquidos",nombre:"Sabor sandía",precio:1600,img:"../imagenes/liquido3.jpg",id:6,cantidad:1},
+        {categoria:"repuestos",nombre:"Resistencia",precio:500,img:"../imagenes/rep1.jpg",id:7,cantidad:1},
+        {categoria:"repuestos",nombre:"Batería",precio:2000,img:"../imagenes/rep2.jpg",id:8,cantidad:1},
+        {categoria:"repuestos",nombre:"Cartucho",precio:3500,img:"../imagenes/rep3.jpg",id:9,cantidad:1},
     ];
     // Elementos correspondientes al funcionamiento del carrito de compras.
     let carrito = [];
@@ -23,6 +23,7 @@
     let carritoTotalText = document.getElementById("carritoTotal");
     let botonVaciar = document.getElementById("carritoVaciar");
     let terminarCompra = document.getElementById("carritoTerminar")
+    let carritoContainer = document.getElementById('contenedorCarrito')
 // ------------------
 let ids = productos.map((el) => el.id); // Mapeo de las ids de los objetos, para pushear al carrito con cada botón.
 // Obtención del carrito mediante localStorage
@@ -80,15 +81,30 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
 //Funciones Correspondientes al agregado de objetos al carrito
     // Se ejecuta cuando se presiona un boton, recibe un parametro (id), mediante la function eventoPresion() y si este existe, lo guarda en una variable, lo pushea al carrito y ejecuta la siguiente function.
     let agregar = (id) => {
+        const agregado = carrito.some(el => el.id === id)
+        if(agregado){
+            const elem = carrito.map(elem =>{
+                if(elem.id === id){
+                    elem.cantidad++
+                }
+            })
+        } else{
         let prodSeleccionado = productos.find(prod=>prod.id===id);
         carrito.push(prodSeleccionado);
+        }
         agregarItemAlCarrito(); 
-    };
-
+    };    
     // Se ejecuta luego de agregar(), primeramente vacia el elemento padre (carritoPlantilla) para que no se dupliquen los elementos, luego con un reduce calculo el precio total para que varie según elimine o agregue productos, y luego inyecto codigo HTML con los parametros correspondientes.
     const agregarItemAlCarrito= () => {
+        console.log(carrito)
+        if(carrito.length < 1){
+            carritoContainer.classList.add('oculto')
+        } else if(carrito.length >= 1){
+            carritoContainer.classList.remove('oculto')
+        }
         carritoPlantilla.innerHTML = ""
-        carritoTotalText.innerText = `$${carrito.reduce((acc,prod) => acc + prod.precio,0)}`;
+        carritoTotalText.innerText = `$${carrito.reduce((acc,prod) => acc + prod.precio * prod.cantidad,0)}`;
+        localStorage.setItem('carrito', JSON.stringify(carrito))
         carrito.forEach((elem) => {
             const carritoFila = document.createElement('div');
             const carritoContenido = `
@@ -105,7 +121,7 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
             </div>
             <div class="col-3">
             <div class="carrito-item-cantidad d-flex pb-2 pt-3">
-                <p class="mb-0 ms-5">1 </p>
+                <p class="mb-0 ms-5">${elem.cantidad}</p>
             </div>
         </div>
             <div class="col-2">
@@ -118,7 +134,7 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
             carritoFila.innerHTML = carritoContenido
             carritoPlantilla.appendChild(carritoFila)
             
-            localStorage.setItem('carrito', JSON.stringify(carrito))
+            
         })};
         // configuro los botones como target, y utilizo el metodo .closest para seleccionar la card mas cercana al boton presionado, para recuperarla, luego con esa card, recupero un elemento donde guarde  la id del producto, y ejecuto la funcion agregar()
         function eventoPresion(event){
@@ -146,3 +162,4 @@ terminarCompra.addEventListener('click', () => {
     carrito.length = 0;
     agregarItemAlCarrito();
 });
+

@@ -12,20 +12,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Play:wght@700&family=Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../imagenes/vapeLogoPen.png">
     
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand flex-fill" href="./index.html"><img src="../imagenes/vapeLogo.png" alt=""></a>
+                <a class="navbar-brand flex-fill" href="../index.html"><img src="../imagenes/vapeLogo.png" alt=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 container-fluid justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./index.html">Todos los Productos</a>
+                        <a class="nav-link" aria-current="page" href="./todos.html">Todos los Productos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="./vaporizadores.html">Vaporizadores</a>
@@ -48,19 +49,24 @@
             </div>
         </div>    
         <div class="container">
-            <div class="carritoContainer">
+            <div class="carritoContainer" id="contenedorCarrito">
                 <h3 class="text-center">CARRITO</h3>
-                <div class="row">
-                    <div class="col-6">
+                <div class="row containerElementosCarrito">
+                    <div class="col-4">
                         <div class="carritoSubtitulo">
                             <h6>Producto</h6>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <div class="carritoSubtitulo">
                             <h6>Precio</h6>
                         </div>
                     </div>
+                    <div class="col-3">
+                        <div class="carritoSubtitulo">
+                            <h6>Cantidad</h6>
+                        </div>
+                    </div>                
                 </div> 
 
                 <div class="carritoElementsContainer" id="carritoPlantilla"> 
