@@ -1,14 +1,25 @@
 // Arreglos
     let productos =[
-        {categoria:"vaporizadores",nombre:"Vaporesso Renova Zero",precio:10000,img:"../imagenes/vapo1.jpg",id:1,cantidad:1},
-        {categoria:"vaporizadores",nombre:"Uwell Caliburn",precio:12000,img:"../imagenes/vapo2.jpg",id:2,cantidad:1},
-        {categoria:"vaporizadores",nombre:"Vaporesso GTX GO 80",precio:14000,img:"../imagenes/vapo3.jpg",id:3,cantidad:1},
-        {categoria:"liquidos",nombre:"Sabor frutilla",precio:1000,img:"../imagenes/liquido1.jpg",id:4,cantidad:1},
-        {categoria:"liquidos",nombre:"Sabor uva",precio:1300,img:"../imagenes/liquido2.jpg",id:5,cantidad:1},
-        {categoria:"liquidos",nombre:"Sabor sandía",precio:1600,img:"../imagenes/liquido3.jpg",id:6,cantidad:1},
-        {categoria:"repuestos",nombre:"Resistencia",precio:500,img:"../imagenes/rep1.jpg",id:7,cantidad:1},
-        {categoria:"repuestos",nombre:"Batería",precio:2000,img:"../imagenes/rep2.jpg",id:8,cantidad:1},
-        {categoria:"repuestos",nombre:"Cartucho",precio:3500,img:"../imagenes/rep3.jpg",id:9,cantidad:1},
+        {categoria:"vaporizadores",nombre:"Vaporesso Renova Zero",precio:10000,img:"../imagenes/vapo1.jpg",id:101,cantidad:1},
+        {categoria:"vaporizadores",nombre:"Uwell Caliburn",precio:12000,img:"../imagenes/vapo2.jpg",id:102,cantidad:1},
+        {categoria:"vaporizadores",nombre:"Vaporesso GTX GO 80",precio:14000,img:"../imagenes/vapo3.jpg",id:103,cantidad:1},
+        {categoria:"vaporizadores",nombre:"Smok Nord 2",precio:15000,img:"../imagenes/vapo4.jpg",id:104,cantidad:1},
+        {categoria:"vaporizadores",nombre:"Pachamama 1200 PUFF",precio:4000,img:"../imagenes/vapo5.jpg",id:105,cantidad:1},
+        {categoria:"vaporizadores",nombre:"VooPoo Drag 3",precio:27000,img:"../imagenes/vapo6.jpg",id:106,cantidad:1},
+        {categoria:"vaporizadores",nombre:"Vaporesso Luxe 80s",precio:20000,img:"../imagenes/vapo7.jpg",id:107,cantidad:1},
+        {categoria:"vaporizadores",nombre:"Vaporesso Gen S",precio:34000,img:"../imagenes/vapo8.jpg",id:108,cantidad:1},
+        {categoria:"liquidos",nombre:"Shibumi frutilla",precio:1000,img:"../imagenes/liquido1.jpg",id:201,cantidad:1},
+        {categoria:"liquidos",nombre:"Shibumi uva",precio:1300,img:"../imagenes/liquido2.jpg",id:202,cantidad:1},
+        {categoria:"liquidos",nombre:"Shibumi sandía",precio:1600,img:"../imagenes/liquido3.jpg",id:203,cantidad:1},
+        {categoria:"liquidos",nombre:"Shibumi cheescake",precio:2000,img:"../imagenes/liquido4.jpg",id:204,cantidad:1},
+        {categoria:"liquidos",nombre:"Shibumi limon + nicotina",precio:3300,img:"../imagenes/liquido5.jpg",id:205,cantidad:1},
+        {categoria:"liquidos",nombre:"Shibumi wabi sabi + nicotina",precio:3300,img:"../imagenes/liquido6.jpg",id:206,cantidad:1},
+        {categoria:"liquidos",nombre:"Element caramelo",precio:5000,img:"../imagenes/liquido7.jpg",id:207,cantidad:1},
+        {categoria:"liquidos",nombre:"Element Fresa",precio:5000,img:"../imagenes/liquido8.jpg",id:208,cantidad:1},
+        {categoria:"repuestos",nombre:"Resistencia",precio:500,img:"../imagenes/rep1.jpg",id:301,cantidad:1},
+        {categoria:"repuestos",nombre:"Cargador micro USB",precio:800,img:"../imagenes/rep4.jpg",id:302,cantidad:1},
+        {categoria:"repuestos",nombre:"Batería",precio:2000,img:"../imagenes/rep2.jpg",id:303,cantidad:1},
+        {categoria:"repuestos",nombre:"Cartucho",precio:3500,img:"../imagenes/rep3.jpg",id:304,cantidad:1},
     ];
     // Elementos correspondientes al funcionamiento del carrito de compras.
     let carrito = [];
@@ -26,6 +37,7 @@
     let carritoContainer = document.getElementById('contenedorCarrito')
 // ------------------
 let ids = productos.map((el) => el.id); // Mapeo de las ids de los objetos, para pushear al carrito con cada botón.
+// ------------------
 // Obtención del carrito mediante localStorage
 // agrego un event listener para cuando cargue la página, una vez que esto sucede, obtiene el item guardado en el storage en la function agregarItemAlCarrito, cuando obtengo todo el carrito, lo vuelvo a convertir a JS para poder reproducirlo y asi no perder los elementos del carrito.
 document.addEventListener('DOMContentLoaded', () => {

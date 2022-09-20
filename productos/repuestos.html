@@ -26,6 +26,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 container-fluid justify-content-end">
                     <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>             
+                    <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="./todos.html">Todos los Productos</a>
                     </li>
                     <li class="nav-item">
@@ -73,15 +76,15 @@
                     <!-- elementos del carrito generados mediante JS -->
                 </div>
 
-                <div class="row">
-                    <div class="col">
-                        <div class="carritoTotal d-flex align-items-center">
-                            <p class="mb-0 ">Total:</p>
-                            <p class="ml-4 mb-0 flex-fill" id="carritoTotal">$0</p>
-                            <button class="btn btn-primary" id="carritoVaciar">Vaciar</button>
-                            <a href="#" class="btn btn-primary" id="carritoTerminar">Comprar</a>
-                        </div>
+                <div class="carritoTotal d-flex align-items-center">
+                    <div class="col-8">
+                        <p class="mb-0 ">Total:</p>
+                        <p class="ml-4 mb-0" id="carritoTotal">$0</p>
                     </div>
+                    <div class="col-4 carritoTotal-botones">   
+                        <button class="btn btn-primary mb-1" id="carritoVaciar">Vaciar</button>
+                        <a href="#" class="btn btn-primary mb-1" id="carritoTerminar">Comprar</a>
+                    </div>    
                 </div>
                 
             </div>
@@ -91,8 +94,34 @@
         </svg>
     </main>
     <footer>
-
-    </footer> 
+        <div class="row">
+            <div class="footer-info col-md mb-2">
+                <a href="../index.html"><img src="../imagenes/vapeLogWhite.png" alt=""></a>
+                <div class="footer-info-text">
+                    <a href="./todos.html">Todos los Productos</a>
+                    <a href="./vaporizadores.html">Vaporizadores</a>
+                    <a href="./liquidos.html">Liquidos</a>
+                    <a href="./repuestos.html">Repuestos</a>
+                </div>    
+            </div>
+            <div class="footer-pagos col-md mb-2">
+                <img src="../imagenes/pagos/aceptamos_bitcoin.png" alt="">
+                <img src="../imagenes/pagos/mercado-pago.png" alt="">
+            </div>
+            <div class="footer-redes col-md mb-2">
+                <span>Nuestras Redes</span>
+                <div class="footer-redes-icons">
+                    <a href="#" target="_blank"><i class="bi-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="bi-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="bi-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="bi-telegram"></i></a>
+                </div>    
+            </div>
+        </div>
+        <div class="footer-derechos">
+            <p>© 2022 Vape Vibes. Todos los derechos reservados.</p>
+        </div>
+    </footer>
     <script src="../scripts.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

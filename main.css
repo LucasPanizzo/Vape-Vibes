@@ -1,13 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+html{
+    background-color:#fcfcfc;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
 .navbar-brand img{
-    width: 250px;
+    width: 224px;
 }
 .navbar{
     background-color: #fcfcfc;
+    border-bottom: 1px solid #4995d2;
+    padding-bottom: 10px;
 }
 .nav-link{
     font-family: 'play', sans-serif;
     color: #3b71b9;
     font-size: 1.2rem;
+}
+header{
+    margin-bottom: 20px;
 }
 .activo{
     color: #50a7df;
@@ -49,17 +66,23 @@
     border: none;
     background-color: white;
 }
+.carritoTotal{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+}
 .carritoTotal p{
     font-family: 'Russo One',sans-serif;
     font-size: 1.5rem;
     color: #3b71b9;
+    display: inline-block;
+}
+.carritoTotal-botones{
+    text-align: center;
 }
 #carritoTotal{
     font-family: 'kanit',sans-serif;
     margin-left: 5px;
-}
-#carritoTerminar{
-    margin-left: 20px;
 }
 .btn{
     background-color:#3b71b9 ;
@@ -96,9 +119,63 @@
 .carrito-item-precio{
     font-family: 'kanit',sans-serif;
 }
-footer{
-    background-color: #3b71b9;
-}
 html{
     height: fit-content;
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    padding: 0;
+}
+.row{
+    padding: 0;
+    margin: 0;
+}
+footer{
+    background-color: #3b71b9;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding-top: 20px;
+}
+.footer-pagos img{
+    padding: 5px;
+    width: 60%;
+}
+.footer-info-text{
+    margin-top: 20px;
+}
+.footer-info a{
+    font-size: 1.1rem;
+    font-family: 'Russo One', sans-serif;
+    font-weight: 200;
+    display: block;
+}
+.footer-info a:hover{
+    color: black;
+}
+.footer-info img{
+    width: 50%;
+}
+.footer-redes span{
+    font-size: 2rem;
+    font-family: 'Russo One', sans-serif;
+    font-weight: 200;
+    color: white;
+}
+.footer-redes i{
+    font-size: 4rem;
+}
+.footer-redes i:hover{
+    color: black;
+}
+.footer-derechos{
+    background-color: black;
+    margin-top: 25px;
+}
+.footer-derechos p{
+    color: white;
 }
