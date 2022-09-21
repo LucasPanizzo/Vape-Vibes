@@ -108,12 +108,11 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
     };    
     // Se ejecuta luego de agregar(), primeramente vacia el elemento padre (carritoPlantilla) para que no se dupliquen los elementos, luego con un reduce calculo el precio total para que varie según elimine o agregue productos, y luego inyecto codigo HTML con los parametros correspondientes.
     const agregarItemAlCarrito= () => {
-        console.log(carrito)
-        if(carrito.length < 1){
-            carritoContainer.classList.add('oculto')
-        } else if(carrito.length >= 1){
-            carritoContainer.classList.remove('oculto')
-        }
+            if(carrito.length < 1){
+                carritoContainer.classList.add('oculto')
+            } else if(carrito.length >= 1){
+                carritoContainer.classList.remove('oculto')
+            }
         carritoPlantilla.innerHTML = ""
         carritoTotalText.innerText = `$${carrito.reduce((acc,prod) => acc + prod.precio * prod.cantidad,0)}`;
         localStorage.setItem('carrito', JSON.stringify(carrito))
@@ -158,10 +157,11 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
         }
 //----------------------
 // Funciones correspondientes al vaciado del carrito
-    botonVaciar.addEventListener('click', () => {
+    if(botonVaciar){
+        botonVaciar.addEventListener('click', () => {
         carrito.length = 0;
         agregarItemAlCarrito();
-    });
+    });};
     const eliminarDelCarrito = (ID) => {
         const itemEliminado = carrito.find((del) => del.id === ID);
         const index = carrito.indexOf(itemEliminado);
@@ -169,9 +169,10 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
         agregarItemAlCarrito();
     } ;
 // -----------------------
-terminarCompra.addEventListener('click', () => {
-    alert('Serás redirigido a la página de pago.')
-    carrito.length = 0;
-    agregarItemAlCarrito();
-});
+if(terminarCompra){
+    terminarCompra.addEventListener('click', () => {
+        alert('Serás redirigido a la página de pago.')
+        carrito.length = 0;
+        agregarItemAlCarrito();
+});}
 

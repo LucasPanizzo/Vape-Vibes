@@ -8,8 +8,8 @@ html{
 }
 a{
     text-decoration: none;
-    color: white;
 }
+
 .navbar-brand img{
     width: 224px;
 }
@@ -153,6 +153,7 @@ footer{
     font-family: 'Russo One', sans-serif;
     font-weight: 200;
     display: block;
+    color: white;
 }
 .footer-info a:hover{
     color: black;
@@ -168,6 +169,7 @@ footer{
 }
 .footer-redes i{
     font-size: 4rem;
+    color: white;
 }
 .footer-redes i:hover{
     color: black;
@@ -178,4 +180,130 @@ footer{
 }
 .footer-derechos p{
     color: white;
+}
+.branding-background{
+    height: 700px;
+    background-image: url(./imagenes/index/branding.jpg);
+    background-size: cover;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.branding-layout{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: grayscale(43%) blur(0.5px);
+    background-color: hwb(214 23% 27% / 0.388);
+}
+.branding-layout h1{
+    font-size: 3rem;
+    font-family: 'play',sans-serif;
+    padding-left: 20px;
+}
+.branding-layout p{
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-family: 'kanit',sans-serif;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.branding-link{
+    position: absolute;
+    font-size: 1.2rem;
+    bottom: 0;
+    margin: 10px;
+    align-self: center;
+    color: white;
+    background-color: #3b71b9;
+    padding: 5px;
+    border-radius: 10%;
+}
+.branding-link:hover{
+    color: #3b71b9;
+    background-color: white;
+}
+.productos-background{
+    height: 450px;
+    max-width: 90%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 10px;
+    padding: 0;
+}
+.productos-nav-elemento{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: grayscale(70%) blur(0.5px);
+    background-color: hwb(214 23% 27% / 0.4);
+}
+.productos-nav-elemento:hover{
+    backdrop-filter: none;
+    background-color: hwb(214 23% 27% / 0.5);
+}
+.productos-titulo{
+    font-size: 1.8rem;
+    color: white;
+    font-family: 'Russo one',sans-serif;
+}
+.productos-texto{
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+    margin: 10px;
+    font-family: 'kanit',sans-serif;
+}
+.productos-link{
+    margin-top: 10px;
+    font-size: 1.4rem;
+    color: white;
+    background-color: #3b71b9;
+    padding: 5px;
+    border-radius: 35%;
+}
+.productos-link:hover{
+    color: #3b71b9;
+    background-color: white;
+}
+#productos-vapos{
+    background-image: url(./imagenes/index/vaporizadores.jpg);
+    background-position: right;
+}
+#productos-liquis{
+    background-image: url(./imagenes/index/liquidos.jpg);
+    background-position: center;
+}
+#productos-reps{
+    background-image: url(./imagenes/index/repuestos.jpg);
+}
+.productos-nav-layout{
+    display: flex;
+    justify-content: center;
+}
+.marcas{
+    width: 100%;
+    margin-top: 30px;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow-x: hidden;
+}
+@media screen and (max-width: 1024px){
+    .marcas{
+        overflow: scroll;
+        justify-content: left;
+    }
+}
+.marcas img{
+    height: 100%;
+    padding: 10px;
+    max-width: 180px;
 }

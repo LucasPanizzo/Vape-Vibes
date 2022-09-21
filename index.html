@@ -45,45 +45,49 @@
             </div>
         </nav>
     </header>
-    <main>   
-        <div class="container">
-            <div class="carritoContainer" id="contenedorCarrito">
-                <h3 class="text-center">CARRITO</h3>
-                <div class="row containerElementosCarrito">
-                    <div class="col-4">
-                        <div class="carritoSubtitulo">
-                            <h6>Producto</h6>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="carritoSubtitulo">
-                            <h6>Precio</h6>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="carritoSubtitulo">
-                            <h6>Cantidad</h6>
-                        </div>
-                    </div>                
-                </div> 
-
-                <div class="carritoElementsContainer" id="carritoPlantilla"> 
-                    <!-- elementos del carrito generados mediante JS -->
+    <main>
+        <div class="branding">
+            <div class="branding-background">
+                <div class="branding-layout">
+                    <h1>Abandoná el tabaco AHORA</h1>
+                    <p>Es sabido que la adiccion al cigarrillo es una de las mas dificiles de superar. Por eso queremos ayudarte en este proceso , abandoná tu adicción al tabaco ahora!</p>
+                    <a href="./productos/todos.html" class="branding-link">Ver todos los productos</a>
                 </div>
-
-                   
-                <div class="carritoTotal d-flex align-items-center">
-                    <div class="col-8">
-                        <p class="mb-0 ">Total:</p>
-                        <p class="ml-4 mb-0" id="carritoTotal">$0</p>
-                    </div>
-                    <div class="col-4 carritoTotal-botones">   
-                        <button class="btn btn-primary mb-1" id="carritoVaciar">Vaciar</button>
-                        <a href="#" class="btn btn-primary mb-1" id="carritoTerminar">Comprar</a>
-                    </div>    
-                </div>
-  
             </div>
+        </div>   
+        <div class="productos-nav">
+            <div class="row productos-nav-layout">
+                <div class="col-md productos-background" id="productos-vapos">
+                    <div class="productos-nav-elemento">
+                        <span class="productos-titulo">VAPORIZADORES</span>
+                        <p class="productos-texto">Todos nuestros equipos y pods</p>
+                        <a href="./productos/vaporizadores.html" class="productos-link">VER</a>
+                    </div>
+                </div>
+                <div class="col-md productos-background" id="productos-liquis">
+                    <div class="productos-nav-elemento">
+                        <span class="productos-titulo">LIQUIDOS</span>
+                        <p class="productos-texto">El mejor sabor para tus vapos</p>
+                        <a href="./productos/liquidos.html" class="productos-link">VER</a>
+                    </div>
+                </div> 
+                <div class="col-md productos-background" id="productos-reps">
+                    <div class="productos-nav-elemento">
+                        <span class="productos-titulo">REPUESTOS</span>
+                        <p class="productos-texto">La solución ideal para tu problema</p>
+                        <a href="./productos/repuestos.html" class="productos-link">VER</a>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="marcas">
+            <img src="./imagenes/logos/element.png" alt="">
+            <img src="./imagenes/logos/pachamama.png" alt="">
+            <img src="./imagenes/logos/shibumi.png" alt="">
+            <img src="./imagenes/logos/smok.png" alt="">
+            <img src="./imagenes/logos/uwell.png" alt="">
+            <img src="./imagenes/logos/vaporesso.png" alt="">
+            <img src="./imagenes/logos/voopoo.png" alt="">
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 295">
             <path fill="#3b71b9" fill-opacity="1" d="M0,256L48,266.7C96,277,192,299,288,293.3C384,288,480,256,576,218.7C672,181,768,139,864,149.3C960,160,1056,224,1152,218.7C1248,213,1344,139,1392,101.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
