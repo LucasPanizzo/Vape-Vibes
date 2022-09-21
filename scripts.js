@@ -108,45 +108,45 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
     };    
     // Se ejecuta luego de agregar(), primeramente vacia el elemento padre (carritoPlantilla) para que no se dupliquen los elementos, luego con un reduce calculo el precio total para que varie según elimine o agregue productos, y luego inyecto codigo HTML con los parametros correspondientes.
     const agregarItemAlCarrito= () => {
-            if(carrito.length < 1){
-                carritoContainer.classList.add('oculto')
-            } else if(carrito.length >= 1){
-                carritoContainer.classList.remove('oculto')
-            }
-        carritoPlantilla.innerHTML = ""
-        carritoTotalText.innerText = `$${carrito.reduce((acc,prod) => acc + prod.precio * prod.cantidad,0)}`;
-        localStorage.setItem('carrito', JSON.stringify(carrito))
-        carrito.forEach((elem) => {
-            const carritoFila = document.createElement('div');
-            const carritoContenido = `
-            <div class="row carritoItem border-bottom aling-items-center">
-            <div class="col-4">
-                <div class="carrito-item-title d-fle pb-2 pt-3">
-                    <h6 class="ml-3 mb-0">${elem.nombre}</h6>
+        if(carritoContainer){
+                if(carrito.length < 1){
+                    carritoContainer.classList.add('oculto')
+                } else if(carrito.length >= 1){
+                    carritoContainer.classList.remove('oculto')
+                }
+            carritoPlantilla.innerHTML = ""
+            carritoTotalText.innerText = `$${carrito.reduce((acc,prod) => acc + prod.precio * prod.cantidad,0)}`;
+            localStorage.setItem('carrito', JSON.stringify(carrito))
+            carrito.forEach((elem) => {
+                const carritoFila = document.createElement('div');
+                const carritoContenido = `
+                <div class="row carritoItem border-bottom aling-items-center">
+                <div class="col-4">
+                    <div class="carrito-item-title d-fle pb-2 pt-3">
+                        <h6 class="ml-3 mb-0">${elem.nombre}</h6>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="carrito-item-precio d-flex pb-2 pt-3">
+                        <p class="mb-0">$${elem.precio}</p>
+                    </div>
+                </div>
+                <div class="col-3">
+                <div class="carrito-item-cantidad d-flex pb-2 pt-3">
+                    <p class="mb-0 ms-5">${elem.cantidad}</p>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="carrito-item-precio d-flex pb-2 pt-3">
-                    <p class="mb-0">$${elem.precio}</p>
+                <div class="col-2">
+                    <div class="carrito-item-trash d-flex justify-content-between align-items-center h-100 pb-2 pt-3">
+                        <button class="carritoBasuraButt" onclick="eliminarDelCarrito(${elem.id})"><i class="bi bi-trash carritoBasura" id="trash${elem.id}"></i></button>
+                    </div>
                 </div>
             </div>
-            <div class="col-3">
-            <div class="carrito-item-cantidad d-flex pb-2 pt-3">
-                <p class="mb-0 ms-5">${elem.cantidad}</p>
-            </div>
-        </div>
-            <div class="col-2">
-                <div class="carrito-item-trash d-flex justify-content-between align-items-center h-100 pb-2 pt-3">
-                    <button class="carritoBasuraButt" onclick="eliminarDelCarrito(${elem.id})"><i class="bi bi-trash carritoBasura" id="trash${elem.id}"></i></button>
-                </div>
-            </div>
-        </div>
-            `
-            carritoFila.innerHTML = carritoContenido
-            carritoPlantilla.appendChild(carritoFila)
+                `
+                carritoFila.innerHTML = carritoContenido
+                carritoPlantilla.appendChild(carritoFila)
             
-            
-        })};
+        })}};
         // configuro los botones como target, y utilizo el metodo .closest para seleccionar la card mas cercana al boton presionado, para recuperarla, luego con esa card, recupero un elemento donde guarde  la id del producto, y ejecuto la funcion agregar()
         function eventoPresion(event){
             const butt = event.target
