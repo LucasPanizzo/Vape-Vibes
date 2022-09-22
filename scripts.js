@@ -96,22 +96,27 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
         const agregado = carrito.some(el => el.id === id)
         if(agregado){
             const elem = carrito.map(elem =>{
-                if(elem.id === id){
+                elem.id === id &&
                     elem.cantidad++
-                }
             })
         } else{
         let prodSeleccionado = productos.find(prod=>prod.id===id);
         carrito.push(prodSeleccionado);
         }
-        agregarItemAlCarrito(); 
-    };    
+        agregarItemAlCarrito();
+        Toastify({
+            text: "Producto agregado al carrito",
+            duration: 1500,
+            backgroundColor: '#3b71b9',
+            }).showToast();
+    }; 
+      
     // Se ejecuta luego de agregar(), primeramente vacia el elemento padre (carritoPlantilla) para que no se dupliquen los elementos, luego con un reduce calculo el precio total para que varie según elimine o agregue productos, y luego inyecto codigo HTML con los parametros correspondientes.
     const agregarItemAlCarrito= () => {
         if(carritoContainer){
                 if(carrito.length < 1){
                     carritoContainer.classList.add('oculto')
-                } else if(carrito.length >= 1){
+                } else{
                     carritoContainer.classList.remove('oculto')
                 }
             carritoPlantilla.innerHTML = ""
@@ -145,7 +150,7 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
                 `
                 carritoFila.innerHTML = carritoContenido
                 carritoPlantilla.appendChild(carritoFila)
-            
+                
         })}};
         // configuro los botones como target, y utilizo el metodo .closest para seleccionar la card mas cercana al boton presionado, para recuperarla, luego con esa card, recupero un elemento donde guarde  la id del producto, y ejecuto la funcion agregar()
         function eventoPresion(event){
@@ -157,22 +162,48 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
         }
 //----------------------
 // Funciones correspondientes al vaciado del carrito
-    if(botonVaciar){
+// Al clickear el boton vaciar, ejecuta una alerta de Swal que me muestra una opcion para confirmar el vaciado o cancelarlo
+    botonVaciar &&
         botonVaciar.addEventListener('click', () => {
-        carrito.length = 0;
-        agregarItemAlCarrito();
-    });};
+            Swal.fire({
+                title: '¿Deseas vaciar el carrito?',
+                text: "No podrás recuperarlo",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si,borrar',
+                cancelButtonText: 'Cancelar' 
+              }).then((result) => {
+                result.isConfirmed &&
+                  Swal.fire({
+                    title:'Borrado',
+                    text:'Has vaciado tu carrito',
+                    icon:'success',
+                    timer:1500,
+                    showConfirmButton:false
+                 })
+                  carrito.length = 0;
+                  agregarItemAlCarrito();
+                
+              })
+    });
     const eliminarDelCarrito = (ID) => {
         const itemEliminado = carrito.find((del) => del.id === ID);
         const index = carrito.indexOf(itemEliminado);
         carrito.splice(index,1);
         agregarItemAlCarrito();
+        Toastify({
+            text: "Producto eliminado del carrito",
+            duration: 1500,
+            backgroundColor: '#3b71b9',
+            }).showToast();
     } ;
 // -----------------------
-if(terminarCompra){
+terminarCompra &&
     terminarCompra.addEventListener('click', () => {
         alert('Serás redirigido a la página de pago.')
         carrito.length = 0;
         agregarItemAlCarrito();
-});}
+});
 

@@ -9,9 +9,13 @@ html{
 a{
     text-decoration: none;
 }
-
 .navbar-brand img{
     width: 224px;
+}
+@media screen and (min-width: 1024px){
+    .navbar-brand img{
+        width: 350px;
+    }
 }
 .navbar{
     background-color: #fcfcfc;
@@ -211,11 +215,17 @@ footer{
     padding-left: 15px;
     padding-right: 15px;
 }
+@media screen and (min-width: 1024px){
+    .branding-layout p{
+        width: 52%;
+    }
+}
 .branding-link{
+    font-family: 'Russo One',sans-serif;
     position: absolute;
     font-size: 1.2rem;
     bottom: 0;
-    margin: 10px;
+    margin: 20px;
     align-self: center;
     color: white;
     background-color: #3b71b9;
@@ -263,6 +273,7 @@ footer{
 .productos-link{
     margin-top: 10px;
     font-size: 1.4rem;
+    font-family: 'Russo One',sans-serif;
     color: white;
     background-color: #3b71b9;
     padding: 5px;
@@ -292,18 +303,21 @@ footer{
     margin-top: 30px;
     height: 100px;
     display: flex;
-    justify-content: space-around;
+    justify-content: left;
     align-items: center;
-    overflow-x: hidden;
+    overflow: scroll;
 }
-@media screen and (max-width: 1024px){
+@media screen and (min-width: 1024px){
     .marcas{
-        overflow: scroll;
-        justify-content: left;
+        overflow: hidden;
+        justify-content: space-around;
     }
 }
 .marcas img{
     height: 100%;
     padding: 10px;
     max-width: 180px;
+}
+.toastCarrito{
+    background-color: #3b71b9;
 }
