@@ -175,7 +175,7 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
                 confirmButtonText: 'Si,borrar',
                 cancelButtonText: 'Cancelar' 
               }).then((result) => {
-                result.isConfirmed &&
+                if(result.isConfirmed){
                   Swal.fire({
                     title:'Borrado',
                     text:'Has vaciado tu carrito',
@@ -185,7 +185,7 @@ botonesCarrito.forEach((botonesCarritoPresionado) => {
                  })
                   carrito.length = 0;
                   agregarItemAlCarrito();
-                
+              }
               })
     });
     const eliminarDelCarrito = (ID) => {
