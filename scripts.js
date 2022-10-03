@@ -138,7 +138,7 @@ const agregarItemAlCarrito= () => {
         </div>
             <div class="col-2">
                 <div class="carrito-item-trash d-flex justify-content-between align-items-center h-100 pb-2pt-3">
-                        <button class="carritoBasuraButt" onclick="eliminarDelCarrito(${elem.id})"><i class="bibi-trash carritoBasura" id="trash${elem.id}"></i></button>
+                        <button class="carritoBasuraButt" onclick="eliminarDelCarrito(${elem.id})"><i class="bi-trash carritoBasura" id="trash${elem.id}"></i></button>
                 </div>
             </div>
         </div>
