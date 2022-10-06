@@ -57,6 +57,24 @@ header{
 .carrito-item-title h6,.carrito-item-precio p{
     font-size: 1.1rem;
 }
+.carrito-item-cantidad-suma{
+    color: white;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #3b71b9;
+    border-radius:30%;
+    font-size: 1.5rem;
+    width: 25px;
+    min-width: 20px;
+}
+.carrito-item-cantidad-resta{
+    color: white;
+    background-color: red;
+    border-radius:30%;
+    font-size: 1.5rem;
+    width: 25px;
+    min-width: 20px;
+}
 .carritoSubtitulo h6{
     font-family: 'Russo One',sans-serif;
     font-size: 1.3rem;

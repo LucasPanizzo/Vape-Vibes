@@ -31,8 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
 async function traerProductos(){
     productosFetch = await fetch('./productos.json');
     productos = await productosFetch.json();
-
-
     // Filtros; Creo un array filtrando los objetos correspondientes por categoria, para luego inyectar las cards que corresponda en cada página
     let filtroVapos = productos.filter((prod) => prod.categoria === "vaporizadores")
     let filtroLiquis = productos.filter((prod) => prod.categoria === "liquidos")
@@ -67,7 +65,7 @@ async function traerProductos(){
                     <h5 class="card-title">${el.nombre}</h5>
                     <span class="id-producto">${el.id}</span>
                     <h6 class="card-precio mb-2">$${el.precio}</h6>
-                    <button class="btn btn-primary bott" id="boton${el.id}">Agregar al carrito <i class="bi bi-cart-fill"></i></button>
+                    <button class="btn btn-primary bott">Agregar al carrito <i class="bi bi-cart-fill"></i></button>
                 </div>
             </div>    
             `
@@ -85,13 +83,10 @@ async function traerProductos(){
             agregar(itemId)
         }
         // Se ejecuta cuando se presiona un boton, recibe un parametro (id), mediante la function eventoPresion() y si este existe, lo guarda en una variable, lo pushea al carrito y ejecuta la siguiente function.
-        let agregar = (id) => {
+        function agregar(id){
             const agregado = carrito.some(el => el.id === id)
             if(agregado){
-                const elem = carrito.map(elem =>{
-                    elem.id === id &&
-                        elem.cantidad++
-                })
+                aumentarCantidad(id)
             } else{
             let prodSeleccionado = productos.find(prod=>prod.id===id);
             prodSeleccionado.cantidad = 1
@@ -107,6 +102,7 @@ async function traerProductos(){
         }
 // -------------------------
 // Se ejecuta luego de agregar(), primeramente vacia el elemento padre (carritoPlantilla) para que no se dupliquen los elementos, luego con un reduce calculo el precio total para que varie según elimine o agregue productos, y luego inyecto codigo HTML con los parametros correspondientes.
+// Agregué un if que retorna un boolenao, para que se reproduzca solo en las paginas donde este el contenedor del carrito y asi evitar errores en consola.
 const agregarItemAlCarrito= () => {
     if(carritoContainer){
             if(carrito.length < 1){
@@ -121,31 +117,32 @@ const agregarItemAlCarrito= () => {
             const carritoFila = document.createElement('div');
             const carritoContenido = `
             <div class="row carritoItem border-bottom aling-items-center">
-            <div class="col-4">
-                <div class="carrito-item-title d-fle pb-2 pt-3">
-                    <h6 class="ml-3 mb-0">${elem.nombre}</h6>
+                <div class="col-4">
+                    <div class="carrito-item-title d-fle pb-2 pt-3">
+                        <h6 class="ml-3 mb-0">${elem.nombre}</h6>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="carrito-item-precio d-flex pb-2 pt-3">
+                        <p class="mb-0">$${elem.precio}</p>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="carrito-item-cantidad d-flex pb-2 pt-3 align-items-center">
+                        <p class=mb-0 ms-5>${elem.cantidad}</p>
+                        <button onclick="aumentarCantidad(${elem.id})" class="carrito-item-cantidad-suma">+</button>
+                        <button onclick="disminuirCantidad(${elem.id})" class="carrito-item-cantidad-resta">-</button>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="carrito-item-trash d-flex justify-content-between align-items-center h-100 pb-2pt-3">
+                            <button class="carritoBasuraButt" onclick="eliminarDelCarrito(${elem.id})"><i class="bi-trash carritoBasura" id="trash${elem.id}"></i></button>
+                    </div>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="carrito-item-precio d-flex pb-2 pt-3">
-                    <p class="mb-0">$${elem.precio}</p>
-                </div>
-            </div>
-            <div class="col-3">
-            <div class="carrito-item-cantidad d-flex pb-2 pt-3">
-                <p class="mb-0 ms-5">${elem.cantidad}</p>
-            </div>
-        </div>
-            <div class="col-2">
-                <div class="carrito-item-trash d-flex justify-content-between align-items-center h-100 pb-2pt-3">
-                        <button class="carritoBasuraButt" onclick="eliminarDelCarrito(${elem.id})"><i class="bi-trash carritoBasura" id="trash${elem.id}"></i></button>
-                </div>
-            </div>
-        </div>
             `
             carritoFila.innerHTML = carritoContenido
             carritoPlantilla.appendChild(carritoFila)
-                
         })}};
 //----------------------
 // Funciones correspondientes al vaciado del carrito
@@ -172,11 +169,10 @@ const agregarItemAlCarrito= () => {
                  })
                   carrito.length = 0
                   agregarItemAlCarrito();
-                  console.log(carrito)
               }
               })
     });
-    const eliminarDelCarrito = (ID) => {
+    function eliminarDelCarrito(ID){
         const itemEliminado = carrito.find((del) => del.id === ID);
         const index = carrito.indexOf(itemEliminado);
         carrito.splice(index,1);
@@ -186,7 +182,26 @@ const agregarItemAlCarrito= () => {
             duration: 1500,
             backgroundColor: '#3b71b9',
             }).showToast();
-    } ;
+    };
+    //Funciones corresponidentes a la cantidad requerida de cada producto.
+    // recibe la id mediante el boton y mapea el carrito sumandole 1 elemento por cada click.
+    function aumentarCantidad(ID){
+        carrito.map(elem =>{
+            elem.id === ID &&
+                elem.cantidad++
+        })
+        agregarItemAlCarrito()
+    };
+    // igual que la de arriba, si la cantidad llega a ser 0, se reinicia a 1 para evitar errores.
+    function disminuirCantidad(ID){
+        carrito.map(elem =>{
+            elem.id === ID &&
+                elem.cantidad--
+            elem.cantidad <= 0 ? (elem.cantidad=1):null;    
+        })
+        agregarItemAlCarrito()
+    }
+
 // -----------------------
 terminarCompra &&
     terminarCompra.addEventListener('click', () => {
