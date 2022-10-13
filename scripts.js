@@ -65,7 +65,7 @@ async function traerProductos(){
                     <h5 class="card-title">${el.nombre}</h5>
                     <span class="id-producto">${el.id}</span>
                     <h6 class="card-precio mb-2">$${el.precio}</h6>
-                    <button class="btn btn-primary bott">Agregar al carrito <i class="bi bi-cart-fill"></i></button>
+                    <button class=" card-butt bott">Agregar al carrito <i class="bi bi-cart-fill"></i></button>
                 </div>
             </div>    
             `
@@ -103,7 +103,7 @@ async function traerProductos(){
 // -------------------------
 // Se ejecuta luego de agregar(), primeramente vacia el elemento padre (carritoPlantilla) para que no se dupliquen los elementos, luego con un reduce calculo el precio total para que varie según elimine o agregue productos, y luego inyecto codigo HTML con los parametros correspondientes.
 // Agregué un if que retorna un boolenao, para que se reproduzca solo en las paginas donde este el contenedor del carrito y asi evitar errores en consola.
-const agregarItemAlCarrito= () => {
+function agregarItemAlCarrito(){
     if(carritoContainer){
             if(carrito.length < 1){
                 carritoContainer.classList.add('oculto')
@@ -129,9 +129,9 @@ const agregarItemAlCarrito= () => {
                 </div>
                 <div class="col-3">
                     <div class="carrito-item-cantidad d-flex pb-2 pt-3 align-items-center">
-                        <p class=mb-0 ms-5>${elem.cantidad}</p>
-                        <button onclick="aumentarCantidad(${elem.id})" class="carrito-item-cantidad-suma">+</button>
                         <button onclick="disminuirCantidad(${elem.id})" class="carrito-item-cantidad-resta">-</button>
+                        <p class="mb-0 carrito-item-cantidad-numero">${elem.cantidad}</p>
+                        <button onclick="aumentarCantidad(${elem.id})" class="carrito-item-cantidad-suma">+</button>
                     </div>
                 </div>
                 <div class="col-2">
@@ -156,7 +156,7 @@ const agregarItemAlCarrito= () => {
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Si,borrar',
+                confirmButtonText: 'Si,vaciar',
                 cancelButtonText: 'Cancelar' 
               }).then((result) => {
                 if(result.isConfirmed){
@@ -208,4 +208,4 @@ terminarCompra &&
         alert('Serás redirigido a la página de pago.')
         carrito.length = 0;
         agregarItemAlCarrito();
-});
+    });

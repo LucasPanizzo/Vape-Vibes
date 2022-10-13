@@ -11,6 +11,10 @@ a{
 }
 .navbar-brand img{
     width: 224px;
+    transition: all linear 0.3s;
+}
+.navbar-brand img:hover{
+    transform: scale(1.05);
 }
 @media screen and (min-width: 1024px){
     .navbar-brand img{
@@ -26,6 +30,10 @@ a{
     font-family: 'play', sans-serif;
     color: #3b71b9;
     font-size: 1.2rem;
+    transition: all linear 0.3s;
+}
+.nav-link:hover{
+    transform: scale(1.05);
 }
 header{
     margin-bottom: 20px;
@@ -41,9 +49,6 @@ header{
     border-top: 1px solid #4995d2;
     border-bottom: 1px solid #4995d2;
 }
-.active{
-    color: #4995d2;
-}
 .carritoContainer h3{
     font-family: 'play',sans-serif;
     color: #4995d2;
@@ -51,11 +56,33 @@ header{
     margin-bottom: 15px;
     font-size: 2.5rem;
 }
+#carritoTerminar{
+    background-color: #4995d2;
+    color: white;
+    font-weight: 600;
+    border-radius: .5rem;
+    padding: 7px;
+    transition: all 0.5s;
+}
+#carritoTerminar:hover,#carritoVaciar:hover{
+    border:1px solid #3b71b9;
+    background-color: white;
+    color: black;
+}
 #carritoVaciar{
-    justify-self: end;
+    background-color: #4995d2;
+    color: white;
+    font-weight: 600;
+    border-radius: .5rem;
+    padding: 7px;
+    transition: all 0.5s;
 }
 .carrito-item-title h6,.carrito-item-precio p{
     font-size: 1.1rem;
+}
+.carrito-item-cantidad-numero{
+    margin-left: 5px;
+    margin-right: 5px;
 }
 .carrito-item-cantidad-suma{
     color: white;
@@ -66,6 +93,10 @@ header{
     font-size: 1.5rem;
     width: 25px;
     min-width: 20px;
+    transition: all 0.3s;
+}
+.carrito-item-cantidad-suma:hover{
+    transform: scale(1.12);
 }
 .carrito-item-cantidad-resta{
     color: white;
@@ -74,6 +105,10 @@ header{
     font-size: 1.5rem;
     width: 25px;
     min-width: 20px;
+    transition: all 0.3s;
+}
+.carrito-item-cantidad-resta:hover{
+    transform: scale(1.12);
 }
 .carritoSubtitulo h6{
     font-family: 'Russo One',sans-serif;
@@ -87,6 +122,10 @@ header{
 .carritoBasuraButt{
     border: none;
     background-color: white;
+    transition: all 0.3s;
+}
+.carritoBasuraButt:hover{
+    transform: scale(1.2);
 }
 .carritoTotal{
     margin-top: 5px;
@@ -106,9 +145,6 @@ header{
     font-family: 'kanit',sans-serif;
     margin-left: 5px;
 }
-.btn{
-    background-color:#3b71b9 ;
-}
 .id-producto{
     display: none;
 }
@@ -117,6 +153,10 @@ header{
 }
 .card{
     border:1px solid #3b71b9;
+    transition: all 0.7s;
+}
+.card:hover{
+    transform: scale(1.05);
 }
 .card-img{
     margin-top: 10px;
@@ -130,6 +170,22 @@ header{
     color:#4995d2;
     font-family: 'kanit',sans-serif;
     font-size: 1rem;
+}
+.card-butt{
+    background-color: #4995d2;
+    color: white;
+    font-weight: 600;
+    border-radius: .5rem;
+    padding: 7px;
+}
+.card-butt:hover{
+    border:1px solid #3b71b9;
+    background-color: white;
+    color: black;
+    transform: scale(1.1);
+}
+.card-butt:active{
+animation:slide-bottom 0.03s linear both}@keyframes slide-bottom{0%{transform:translateY(0)}100%{transform:translateY(25px)}
 }
 .containerElementosCarrito{
     border-bottom: 1px solid #4995d2; 
@@ -182,6 +238,10 @@ footer{
 }
 .footer-info img{
     width: 50%;
+    transition: all 0.3s linear;
+}
+.footer-info img:hover{
+    transform: scale(1.2);
 }
 .footer-redes span{
     font-size: 2rem;
@@ -192,6 +252,7 @@ footer{
 .footer-redes i{
     font-size: 4rem;
     color: white;
+    transition: all 0.3s linear;
 }
 .footer-redes i:hover{
     color: black;
@@ -248,9 +309,13 @@ footer{
     color: white;
     background-color: #3b71b9;
     padding: 5px;
-    border-radius: 10%;
+    border-radius: .5rem;
+    min-width: 255px;
+    transition: all 0.3s linear;
 }
 .branding-link:hover{
+    border: 1px solid #3b71b9;
+    transform: scale(1.05);
     color: #3b71b9;
     background-color: white;
 }
@@ -261,6 +326,11 @@ footer{
     background-size: cover;
     margin: 10px;
     padding: 0;
+    transition: all 0.5s linear;
+}
+.productos-background:hover{
+    transform: scale(1.05);
+    box-shadow: 3px 4px 7px 1px rgba(0,0,0,0.73);
 }
 .productos-nav-elemento{
     display: flex;
@@ -295,7 +365,8 @@ footer{
     color: white;
     background-color: #3b71b9;
     padding: 5px;
-    border-radius: 35%;
+    border-radius: .5rem;
+    transition: all 0.3s linear;
 }
 .productos-link:hover{
     color: #3b71b9;
@@ -335,4 +406,8 @@ footer{
     height: 100%;
     padding: 10px;
     max-width: 180px;
+    transition: all 0.5s linear;
+}
+.marcas img:hover{
+    transform: scale(1.1);
 }
