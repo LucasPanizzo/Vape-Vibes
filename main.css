@@ -177,15 +177,13 @@ header{
     font-weight: 600;
     border-radius: .5rem;
     padding: 7px;
+    transition: all linear 0.3s;
 }
 .card-butt:hover{
     border:1px solid #3b71b9;
     background-color: white;
     color: black;
     transform: scale(1.1);
-}
-.card-butt:active{
-animation:slide-bottom 0.03s linear both}@keyframes slide-bottom{0%{transform:translateY(0)}100%{transform:translateY(25px)}
 }
 .containerElementosCarrito{
     border-bottom: 1px solid #4995d2; 
